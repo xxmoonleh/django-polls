@@ -1,10 +1,12 @@
-{% extends 'polls/base.html' %}
+{% extends "polls/base.html" %}
 
-{% block content %} 
-    <h1>Acessar<h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Enviar</button>
-        </form>
-{% endblock %}
+{% block content %}
+<h1>Acessar</h1>
+
+    <form method='post'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Acessar</button>
+    </form>
+
+{% endblock content %}

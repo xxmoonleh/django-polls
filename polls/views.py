@@ -1,5 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Question
 
 
@@ -8,6 +11,7 @@ def index(request):
     context = {"latest_question_list": latest_question_list}
     return render(request, "polls/index.html", context)
 
+@login_required
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, "polls/detail.html", {"question": question})
@@ -40,7 +44,7 @@ class QuestionDetailView(DetailView):
 
 from django.contrib import messages
 
-class QuestionDeleteView(DeleteView):
+class QuestionDeleteView(LoginRequiredMixin, DeleteView):
     model = Question
     success_url = reverse_lazy('question-list')
     success_message = 'Enquete excluída com sucesso.'

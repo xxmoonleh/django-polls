@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i#^x8(5g7f_62u=wuh$p*1rota&p7f(d9j&13iizma$%-dp%t3'
+SECRET_KEY = 'django-insecure-)hay!-d(2o%7)$u+l4%cm79(uhgcjs7)d+!aq1)s0enh1vp144'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,14 +74,21 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#DATABASES = {
+#   'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': "django.db.backends.mysql",
         'NAME': 'pollsdb',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '3306'
     }
 }
 
@@ -128,5 +134,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/admin'
-LOGOUT_REDIRECT_URL = '/admin'
+LOGIN_REDIRECT_URL  = '/enquetes/listar'
+LOGOUT_REDIRECT_URL  = '/enquetes/listar'
