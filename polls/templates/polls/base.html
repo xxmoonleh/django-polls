@@ -21,6 +21,7 @@
                     <h1>Cabeçalho</h1>
                     <ul>
                         {% if user.is_authenticated %}
+                        {{user.cpf}} |  {{user.data_nascimento|date:"d/m/Y"}} | {{user.is_superuser}}
                             <li>{{user.username}} | <a href="{% url "logout" %}">Logout</a></li>
                         {% else %}
                             <li><a href="{% url "signup" %}">Cadastrar</a></li>
