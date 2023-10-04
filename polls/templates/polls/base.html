@@ -10,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
+
+    
     
 </head>
 <body>
@@ -21,8 +23,11 @@
                     <h1>Cabeçalho</h1>
                     <ul>
                         {% if user.is_authenticated %}
-                        {{user.cpf}} |  {{user.data_nascimento|date:"d/m/Y"}} | {{user.is_superuser}}
-                            <li>{{user.username}} | <a href="{% url "logout" %}">Logout</a></li>
+
+                            <li style="list-style: none;">{{user.username}} | <a href="{% url "logout" %}">Logout</a></li>
+
+                            <a class="p-2 text-dark" href="{% url 'account_edit' pk=user.pk %}">Minha conta</a>
+
                         {% else %}
                             <li><a href="{% url "signup" %}">Cadastrar</a></li>
                             <li><a href="{% url "login" %}">Login</a></li>
