@@ -29,8 +29,8 @@
                             <a class="p-2 text-dark" href="{% url 'account_edit' pk=user.pk %}">Minha conta</a>
 
                         {% else %}
-                            <li><a href="{% url "signup" %}">Cadastrar</a></li>
-                            <li><a href="{% url "login" %}">Login</a></li>
+                            <li style="list-style: none;"><a href="{% url "signup" %}">Cadastrar</a></li>
+                            <li style="list-style: none;"><a href="{% url "login" %}">Login</a></li>
                         {% endif %}
                     </ul>
                 </div>
