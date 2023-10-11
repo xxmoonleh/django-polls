@@ -98,7 +98,7 @@ class ChoiceCreateView(CreateView):
         return super(ChoiceCreateView, self).form_valid(form)
     
     def get_success_url(self, *args, **kwargs):
-        qustion_id = self.kwargs.get('pk')
+        question_id = self.kwargs.get('pk')
         return reverse_lazy('poll_edit', kwargs={'pk': question_id})
     
 class ChoiceUpdateView(UpdateView):
