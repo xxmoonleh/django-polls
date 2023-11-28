@@ -32,7 +32,7 @@ class AccountUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'accounts/user_form.html'
     fields = ('first_name', 'email', 'imagem', )
-    success_url = reverse_lazy('question-list')
+    success_url = reverse_lazy('login')
     success_message = 'Perfil atualizado com sucesso!'
     
     def get_queryset(self):

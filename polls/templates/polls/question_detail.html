@@ -5,20 +5,22 @@
     <p>{{ question.question_text }}</p>
 
     <p>Data da Publicação: {{ question.pub_date }} </p>
-    
     {% if total_votes %}
-        <p>Total de votos: {{ total_votes }}</p>
-    {% endif %}
-    <form action="{% url 'poll_vote' question_id=question.id %}" method="post">
+            <p>Total de votos: {{ total_votes }}</p>
+        {% endif %}
+
+   <form action="{% url 'poll_vote' question_id=question.id %}" method="post">
         {% csrf_token %}
-        <fieldset>
-            <legend><h1>{{ question.question_text }}</h1></legend>
-            {% for choice in question.choice_set.all %}
-                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-            {% empty %}
-                <h5>Não há alternativas cadastradas</h5>
-            {% endfor %}
+         <fieldset>
+            <legend>
+                 <h1>{{ question.question_text }}</h1>
+                {% for choice in question.choice_set.all %}
+                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                {% empty %}
+                    <h5>Não há alternativas cadastradas</h5>
+                {% endfor %}
+            </legend>
         </fieldset>
         {% if question.choice_set.all %}
             <input type="submit" value="Votar">
@@ -26,10 +28,10 @@
     </form>
 
     <div class="card-body">
-        {% if question.author  %}
+        {% if question.author %}
         <span>Autor: {{ question.author.username}}</span>
         {% else %}
-        <span>Autor: Desconhecido</spam>
+        <span>Autor: Desconhecido</span>
         {% endif %} <br>
 
     <ul>
