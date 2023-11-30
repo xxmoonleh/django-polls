@@ -7,8 +7,8 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit">
+    
     </form>
-
     {% if object %}
     <div class="mt-5">
         <h3>Alternativas de Pergunta</h3>
@@ -16,25 +16,26 @@
             + Incluir Alternativa
         </a>
         <ul>
-            {% for choice in question_choices %}
-            <div>
-                <li>
-                    {{ choice.choice_text}} &nbsp;
-                    <a href="{% url 'choice_add' pk=choice.id %}" class="link-secondary">
-                        Editar
-                    </a>
-            </div>
+        {% for choice in question_choices %}
+        <div>
+            <li>
+                {{ choice.choice_text}} &nbsp;
+                <a href="{% url 'choice_add' pk=choice.id %}" class="link-secondary">
+                    Editar
+         </div>
 
-            <div>
-                    <a href="{% url 'choice_delete' pk=choice.id %}" class="link-secondary">
-                        Excluir
-                    </a>
-                </li>
-            </div>
-            {% empty %}
-                <li>Não existem alternativas para a pergunta</li>
-            {% endfor %}
+        <div>
+                </a>
+                <a href="{% url 'choice_delete' pk=choice.id %}" class="link-secondary">
+                    Excluir
+                </a>
+            </li>
+        </div>
+        {% empty %}
+            <li>Não existem alternativas para a pergunta</li>
+        {% endfor %}
         </ul>
     </div>
     {% endif %}
+
 {% endblock content %}

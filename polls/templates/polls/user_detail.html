@@ -10,26 +10,26 @@
 
     </div>
 
-     <div class="card-body"> 
+    <div class="card-body"> 
 
-         <p>E-mail: {{ user.email }}</p>
+        <p>E-mail: {{ user.email }}</p>
 
-         <h2>Enquetes que você votou</h2>
+        <h2>Enquetes que você votou</h2>
 
-          <ol>
-                {% for item in questions_voted %}
+        <ol>
+            {% for item in questions_voted %}
 
-                        <li>{{ item.question.question_text }}</li>
+                <li>{{ item.question.question_text }}</li>
 
-                {% empty %}
+            {% empty %}
+       
+                <li>Você não votou em nenhuma enquete</li>
 
-                         <li>Você não votou em nenhuma enquete</li>
+            {% endfor %}
 
-                {% endfor %}
+        </ol>
 
-          </ol>
-
-     </div>
+    </div>
 
 </div>
 
